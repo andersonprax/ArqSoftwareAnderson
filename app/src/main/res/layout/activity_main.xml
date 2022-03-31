@@ -33,4 +33,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="161dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginBottom="112dp"
+        android:text="@string/contato1"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnIrParaTela2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

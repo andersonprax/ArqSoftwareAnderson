@@ -11,45 +11,58 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.aulaarqsfwmobile.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    //private ActivityMainBinding binding;
     private MyBroadcastReceiver receiver;
+    private TextView mensag;
+    private Button btnIrParaTela2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        btnIrParaTela2 = findViewById(R.id.btnIrParaTela2);
+        mensag = findViewById(R.id.textView4);
 
-        //setSupportActionBar(binding.toolbar);
+//        binding = ActivityMainBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
 
         Intent intent = new Intent(this, MyIntentService.class);
         intent.putExtra("TELA", "Tela 1");
         startService(intent);
 
-        binding.btnIrParaTela2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), Tela2.class);
-                startActivity(intent);
-            }
+//        binding.btnIrParaTela2.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getBaseContext(), Tela2.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        btnIrParaTela2.setOnClickListener(v->{
+            Intent in = new Intent(this, Tela2.class);
+            startActivity(in);
         });
 
         List<MyContact> contacts = ContactsHelper.getContacts(this);
+        ArrayList<String> nomes = new ArrayList<>();
 
         if (contacts.size() >= 1){
-            contacts.get(0);
-        }
+            for (MyContact contact : contacts) {
+                nomes.add(contact.getName());
+                Log.d("APS", "ID: " + contact.getId() + ", Name: " + contact.getName());
+            }
 
-        for (MyContact contact : contacts) {
-            Log.d("APS", "ID: " + contact.getId() + ", Name: " + contact.getName());
+            mensag.setText(nomes.get(0));
         }
     }
 
