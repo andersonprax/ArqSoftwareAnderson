@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
 //        receiver = new MyBroadcastReceiver();
 //        IntentFilter filter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
 //        registerReceiver(receiver, filter);
@@ -89,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class MyBroadcastReceiver extends BroadcastReceiver {
-
         @Override
         public void onReceive(Context context, Intent intent){
             Log.d("APS", "O Status do Wi-Fi Mudou");
